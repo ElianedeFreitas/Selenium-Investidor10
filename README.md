@@ -1,112 +1,62 @@
-# 🖥️ Automação Selenium - Portal EAD Unieuro
+# Automação Selenium — Investidor10 (ITSA3 – 1 dia)
 
-Este projeto em **Python + Selenium** automatiza o acesso ao portal **EAD da Unieuro** para:
+Script em Python (Selenium) que acessa o **Investidor10**, abre a página da **ITSA3** e seleciona a aba **“1 dia”** na seção **COTAÇÃO ITSA3**, salvando um print da seção.
 
-- Fazer login automaticamente no Moodle da Unieuro.
-- Acessar a disciplina **24 | GPSINN | PROJETO INTEGRADOR DE SISTEMAS COMPUTACIONAIS**.
-- Localizar e clicar no arquivo **`globo.pdf`**.
-- Baixar o PDF automaticamente para uma pasta configurada no Windows.
+## 📦 Requisitos
 
----
+- **Python 3.8+**
+- **Google Chrome** instalado
+- **ChromeDriver** compatível com sua versão do Chrome  
+  > Dica: verifique a versão do Chrome em `Ajuda > Sobre o Google Chrome` e baixe o ChromeDriver correspondente.
+- Pacotes Python:
+  ```bash
+  pip install selenium
 
-## 🚀 Funcionalidades
-- **Login automático** com usuário/senha pré-configurados.
-- **Navegação** até a disciplina pelo texto do curso.
-- **Busca de arquivo** pelo nome (`globo.pdf`).
-- **Download automático** sem abrir popups.
-- Opção de rodar com **interface gráfica** (HEADLESS = False) ou em modo invisível (HEADLESS = True).
 
----
+(Opcional) Para não se preocupar com o caminho do ChromeDriver, você pode usar webdriver-manager. Esse projeto usa caminho local por padrão.
 
-## 🛠️ Requisitos
+📁 Estrutura sugerida
+/
+├─ investidor10_itsa3_1dia.py
+├─ README.md
+└─ .gitignore
 
-### Softwares
-- [Python 3.10+](https://www.python.org/downloads/)
-- [Google Chrome](https://www.google.com/chrome/)
-- [ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/) **compatível com a versão do Chrome**
-
-### Bibliotecas Python
-Crie um ambiente virtual (opcional, recomendado):
-```powershell
-python -m venv venv
-.\venv\Scripts\Activate.ps1   # PowerShell
-venv\Scripts\activate.bat     # CMD
-Instale as dependências:
-
-powershell
-Copiar código
-pip install selenium
-📂 Estrutura do Projeto
-bash
-Copiar código
-Selinium-main/
-│
-├── chromedriver/                  # Pasta com o chromedriver.exe
-│   └── chromedriver.exe
-├── login_unieuro.py               # Script principal de automação
-├── README.md                      # Documentação do projeto
-└── .gitignore                     # Arquivos ignorados no Git
 ⚙️ Configuração
-Baixar ChromeDriver:
 
-Descubra a versão do seu Chrome em chrome://version.
+No arquivo investidor10_itsa3_1dia.py, ajuste:
 
-Baixe o ChromeDriver da mesma versão major (exemplo: Chrome 128 → ChromeDriver 128).
+CHROMEDRIVER_PATH → caminho completo do seu chromedriver.exe
 
-Extraia para:
+DOWNLOAD_DIR → pasta onde o screenshot será salvo (padrão: C:\Users\aluno\Downloads\unieuro_downloads)
 
-makefile
-Copiar código
-C:\Users\aluno\Desktop\Selinium-main\Selinium-main\chromedriver\chromedriver.exe
-Configurar login no script:
+HEADLESS = False se quiser ver o navegador durante a execução (recomendado na primeira vez)
 
-No arquivo login_unieuro.py, altere:
+▶️ Como executar
 
-python
-Copiar código
-LOGIN = "09416619116"
-SENHA = "09416619116"
-Configurar pasta de download:
+No Windows (PowerShell ou Prompt de Comando), na pasta do projeto:
 
-Por padrão, os arquivos serão baixados para:
+python investidor10_itsa3_1dia.py
 
-makefile
-Copiar código
-C:\Users\aluno\Downloads\unieuro_downloads
-Você pode mudar no script editando a constante DOWNLOAD_DIR.
 
-▶️ Como Executar
-Ative o ambiente virtual (se estiver usando):
+Saída esperada:
 
-powershell
-Copiar código
-.\venv\Scripts\Activate.ps1
-Execute o script:
+Um arquivo cotacao_itsa3_1dia.png salvo na pasta definida em DOWNLOAD_DIR.
 
-powershell
-Copiar código
-python login_unieuro.py
-O navegador abrirá, fará login e baixará o arquivo globo.pdf automaticamente.
+🧪 Problemas comuns
 
-📥 Resultado
-O PDF será salvo em:
+FileNotFoundError: ChromeDriver não encontrado
+Corrija o caminho em CHROMEDRIVER_PATH para onde o chromedriver.exe realmente está.
 
-makefile
-Copiar código
-C:\Users\aluno\Downloads\unieuro_downloads
-Você verá no terminal mensagens de status, como:
+Versão incompatível entre Chrome e ChromeDriver
+Baixe a versão correta do ChromeDriver compatível com seu Chrome.
 
-perl
-Copiar código
-Login realizado.
-Curso aberto (provavelmente).
-Cliquei no link do PDF. Aguardando download...
-Download concluído em: C:\Users\aluno\Downloads\unieuro_downloads\globo.pdf
-📌 Observações Importantes
-O script foi desenvolvido para uso pessoal e acadêmico.
+Botão “1 dia” não é clicado
+Rode com HEADLESS = False e verifique se há pop-up de cookies. O script já tenta fechar automaticamente botões como “Aceitar/Concordo/Entendi”.
 
-Mudanças no layout do Moodle podem exigir ajustes nos seletores do Selenium.
+🔐 Dica de segurança
 
-Se houver CAPTCHA ou autenticação extra, o login automático pode falhar.
+Não versione senhas, tokens ou dados pessoais. Evite subir arquivos como *.log, *.env e pastas temporárias.
 
-O Chrome e o ChromeDriver precisam estar na mesma major version (ex.: 128/128).
+🧾 Licença
+
+Uso educacional/demonstrativo. Ajuste para sua necessidade.
