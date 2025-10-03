@@ -35,7 +35,7 @@ HEADLESS = False se quiser ver o navegador durante a execução (recomendado na 
 
 No Windows (PowerShell ou Prompt de Comando), na pasta do projeto:
 
-python investidor10_itsa3_1dia.py
+python atividade0310.py
 
 
 Saída esperada:
